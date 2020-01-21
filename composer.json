@@ -1,0 +1,19 @@
+{
+    "name": "genzzz/helpers",
+    "description": "Functions that can help development",
+    "authors": [
+        {
+            "name": "Genci Shabani",
+            "email": "webmaster.gencishabani@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Genzzz\\Helpers\\": "./src"
+        },
+        "files": ["files/helpers.php"]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    }
+}
