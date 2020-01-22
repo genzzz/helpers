@@ -37,3 +37,20 @@ if(!function_exists('filled')){
         return ! blank($value);
     }
 }
+
+if(!function_exists('env')){
+    /**
+     * Get env values or default
+     * 
+     * @param string $key
+     * @param string $default = null
+     * @return string
+     */
+    function env($key, $default = null)
+    {
+        if($env = getenv($key))
+            return $env;
+
+        return $default;
+    }
+}

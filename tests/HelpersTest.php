@@ -50,4 +50,59 @@ class HelpersTest extends TestCase
     {
         $this->assertTrue(filled($value));
     }
+
+    public function testEnvDefault()
+    {
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+
+        $this->assertNotTrue(getenv('TEST'));
+        $this->assertSame(getenv('ENV_TEST'), 'test');
+        $this->assertNull(env('TEST'));
+        $this->assertSame(env('TEST', 'newTest'), 'newTest');
+        $this->assertSame(env('ENV_TEST'), 'test');
+        $this->assertSame(env('ANOTHER_ENV_TEST', 'newTest'), 'anotherTest');
+    }
+
+    public function testEnvConfig()
+    {
+        $dotenv = Dotenv::createImmutable(__DIR__, 'config.env');
+        $dotenv->load();
+
+        $this->assertNotTrue(getenv('TEST'));
+        $this->assertSame(getenv('CONFIG_ENV_TEST'), 'test');
+        $this->assertNull(env('TEST'));
+        $this->assertSame(env('TEST', 'newTest'), 'newTest');
+
+        // get values also from .env
+        $this->assertSame(env('ENV_TEST'), 'test');
+        $this->assertSame(env('ANOTHER_ENV_TEST', 'newTest'), 'anotherTest');
+
+        // get values from config.env
+        $this->assertSame(env('CONFIG_ENV_TEST'), 'test');
+        $this->assertSame(env('CONFIG_ANOTHER_ENV_TEST', 'bestTest'), 'anotherTest');
+    }
+
+    public function testEnvAnotherConfig()
+    {
+        $dotenv = Dotenv::createImmutable(__DIR__, 'anotherconfig.env');
+        $dotenv->load();
+
+        $this->assertNotTrue(getenv('TEST'));
+        $this->assertSame(getenv('ANOTHER_CONFIG_ENV_TEST'), 'test');
+        $this->assertNull(env('TEST'));
+        $this->assertSame(env('TEST', 'newTest'), 'newTest');
+
+        // get values also from .env
+        $this->assertSame(env('ENV_TEST'), 'test');
+        $this->assertSame(env('ANOTHER_ENV_TEST', 'newTest'), 'anotherTest');
+
+        // get values from config.env
+        $this->assertSame(env('CONFIG_ENV_TEST'), 'test');
+        $this->assertSame(env('CONFIG_ANOTHER_ENV_TEST', 'bestTest'), 'anotherTest');
+
+        // get values from anotherconfig.env
+        $this->assertSame(env('ANOTHER_CONFIG_ENV_TEST'), 'test');
+        $this->assertSame(env('ANOTHER_CONFIG_ANOTHER_ENV_TEST', 'stillAnotherTest'), 'anotherTest');
+    }
 }
