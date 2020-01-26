@@ -108,9 +108,7 @@ class HelpersTest extends TestCase
 
     public function testConfigFunction()
     {
-        $path = __DIR__ . '/config/';
-        if(PHP_OS_FAMILY == 'Windows')
-            $path = str_replace("/", "\\", $path);
+        $path = path_transform(__DIR__ . '/config/');
 
         putenv("CONFIG_PATH=" . $path);
         $app = config('app');
@@ -121,8 +119,7 @@ class HelpersTest extends TestCase
         $this->assertSame($app['key'], 'value');
         $this->assertSame($app['anotherKey'], 'anotherValue');
 
-        $path = __DIR__ . '\\config\\anotherConfig\\';
-        $app = config('anotherApp', $path);
+        $app = config('anotherConfig/anotherApp', $path);
 
         $this->assertIsArray($app);
         $this->assertArrayHasKey('newKey', $app);

@@ -65,6 +65,7 @@ if(!function_exists('config')){
      */
     function config($file, $path = null)
     {
+        // FIXME: define $file as string - string $file
         if(!is_string($file))
             return;
 
@@ -83,5 +84,19 @@ if(!function_exists('config')){
 
             return $array;
         }
+    }
+}
+
+if(!function_exists('path_transform')){
+    /**
+     * Transform path for Windows
+     * 
+     * @param  string $path
+     * @return string transformed_path
+     */
+    function path_transform(string $path)
+    {
+        if(PHP_OS_FAMILY == 'Windows')
+            return str_replace("/", "\\", $path);
     }
 }
