@@ -108,7 +108,10 @@ class HelpersTest extends TestCase
 
     public function testConfigFunction()
     {
-        $path = __DIR__ . '\\config\\';
+        $path = __DIR__ . '/config/';
+        if(PHP_OS_FAMILY == 'Windows')
+            $path = str_replace("/", "\\", $path);
+
         putenv("CONFIG_PATH=" . $path);
         $app = config('app');
 
