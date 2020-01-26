@@ -1,6 +1,7 @@
 {
     "name": "genzzz/helpers",
     "description": "Functions that can help development",
+    "license": "MIT",
     "authors": [
         {
             "name": "Genci Shabani",
