@@ -105,4 +105,26 @@ class HelpersTest extends TestCase
         $this->assertSame(env('ANOTHER_CONFIG_ENV_TEST'), 'test');
         $this->assertSame(env('ANOTHER_CONFIG_ANOTHER_ENV_TEST', 'stillAnotherTest'), 'anotherTest');
     }
+
+    public function testConfigFunction()
+    {
+        $path = __DIR__ . '\\config\\';
+        putenv("CONFIG_PATH=" . $path);
+        $app = config('app');
+
+        $this->assertIsArray($app);
+        $this->assertArrayHasKey('key', $app);
+        $this->assertArrayHasKey('anotherKey', $app);
+        $this->assertSame($app['key'], 'value');
+        $this->assertSame($app['anotherKey'], 'anotherValue');
+
+        $path = __DIR__ . '\\config\\anotherConfig\\';
+        $app = config('anotherApp', $path);
+
+        $this->assertIsArray($app);
+        $this->assertArrayHasKey('newKey', $app);
+        $this->assertArrayHasKey('anotherNewKey', $app);
+        $this->assertSame($app['newKey'], 'newValue');
+        $this->assertSame($app['anotherNewKey'], 'anotherNewValue');
+    }
 }

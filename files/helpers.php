@@ -42,8 +42,8 @@ if(!function_exists('env')){
     /**
      * Get env values or default
      * 
-     * @param string $key
-     * @param string $default = null
+     * @param  string $key
+     * @param  string $default = null
      * @return string
      */
     function env($key, $default = null)
@@ -52,5 +52,36 @@ if(!function_exists('env')){
             return $env;
 
         return $default;
+    }
+}
+
+if(!function_exists('config')){
+    /**
+     * Get values from a config file
+     * 
+     * @param  string $value
+     * @param  string $path = null
+     * @return string
+     */
+    function config($file, $path = null)
+    {
+        if(!is_string($file))
+            return;
+
+        if(is_null($path))
+            $path = env('CONFIG_PATH');
+
+        if(!is_string($path))
+            return;
+
+        $configFile = $path . $file . '.php';
+        if(file_exists($configFile)){
+            $array = include($configFile);
+
+            if(!is_array($array))
+                return;
+
+            return $array;
+        }
     }
 }
