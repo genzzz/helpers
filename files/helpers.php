@@ -61,15 +61,11 @@ if(!function_exists('config')){
      * 
      * @param  string $value
      * @param  string $path = null
-     * @return string
+     * @return array
      */
-    function config($file, $path = null)
+    function config(string $file, string $path = '')
     {
-        // FIXME: define $file as string - string $file
-        if(!is_string($file))
-            return;
-
-        if(is_null($path))
+        if($path == '')
             $path = env('CONFIG_PATH');
 
         if(!is_string($path))

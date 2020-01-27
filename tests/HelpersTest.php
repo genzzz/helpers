@@ -126,5 +126,9 @@ class HelpersTest extends TestCase
         $this->assertArrayHasKey('anotherNewKey', $app);
         $this->assertSame($app['newKey'], 'newValue');
         $this->assertSame($app['anotherNewKey'], 'anotherNewValue');
+
+        $app = config('test');
+
+        $this->assertNull($app);
     }
 }
