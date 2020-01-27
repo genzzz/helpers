@@ -60,7 +60,7 @@ if(!function_exists('config')){
      * Get values from a config file
      * 
      * @param  string $value
-     * @param  string $path = null
+     * @param  string $path = ''
      * @return array
      */
     function config(string $file, string $path = '')
