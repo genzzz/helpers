@@ -1,6 +1,7 @@
 {
     "name": "genzzz/helpers",
     "description": "Functions that can help development",
+    "license": "MIT",
     "authors": [
         {
             "name": "Genci Shabani",
@@ -12,6 +13,9 @@
             "Genzzz\\Helpers\\": "./src"
         },
         "files": ["files/helpers.php"]
+    },
+    "require": {
+        "php": "^7.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4",
