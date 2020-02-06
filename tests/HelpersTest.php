@@ -108,7 +108,7 @@ class HelpersTest extends TestCase
 
     public function testConfigFunction()
     {
-        $path = path_transform(__DIR__ . '/config/');
+        $path = path(__DIR__ . '/config/');
 
         putenv("CONFIG_PATH=" . $path);
         $app = config('app');
