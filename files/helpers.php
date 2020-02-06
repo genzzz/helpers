@@ -83,16 +83,18 @@ if(!function_exists('config')){
     }
 }
 
-if(!function_exists('path_transform')){
+if(!function_exists('path')){
     /**
      * Transform path for Windows
      * 
      * @param  string $path
      * @return string transformed_path
      */
-    function path_transform(string $path)
+    function path(string $path)
     {
         if(PHP_OS_FAMILY == 'Windows')
             return str_replace("/", "\\", $path);
+
+        return $path;
     }
 }
