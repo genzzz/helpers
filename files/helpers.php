@@ -67,7 +67,7 @@ if(!function_exists('config')){
     {
         if($path == ''){
             if(defined('GENZZZ_APP')){
-                $path = GENZZZ_APP;
+                $path = GENZZZ_APP . '/config/';
             }
         }
 
