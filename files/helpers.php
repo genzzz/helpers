@@ -65,8 +65,11 @@ if(!function_exists('config')){
      */
     function config(string $file, string $path = '')
     {
-        if($path == '')
-            $path = env('CONFIG_PATH');
+        if($path == ''){
+            if(defined('GENZZZ_APP')){
+                $path = GENZZZ_APP;
+            }
+        }
 
         if(!is_string($path))
             return;
