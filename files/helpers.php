@@ -48,8 +48,8 @@ if(!function_exists('env')){
      */
     function env($key, $default = null)
     {
-        if($env = getenv($key))
-            return $env;
+        if(isset($_ENV[$key]))
+            return $_ENV[$key];
 
         return $default;
     }
