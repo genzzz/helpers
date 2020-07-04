@@ -66,8 +66,8 @@ if(!function_exists('config')){
     function config(string $file, string $path = '')
     {
         if($path == ''){
-            if(defined('GENZZZ_APP')){
-                $path = GENZZZ_APP . '/config/';
+            if(defined('APP_PATH')){
+                $path = APP_PATH . '/config/';
             }
         }
 
@@ -99,21 +99,5 @@ if(!function_exists('path')){
             return str_replace("/", "\\", $path);
 
         return $path;
-    }
-}
-
-if(!function_exists('assets')){
-    function assets(string $url = ''){
-        if($url == ''){
-            if(defined('GENZZZ_APP')){
-                return site_url('/assets');
-            }
-        }
-    
-        if(!is_string($url))
-            return;
-    
-        if(filter_var($url, FILTER_VALIDATE_URL))
-            return $url;
     }
 }
