@@ -12,7 +12,10 @@
         "psr-4": {
             "Genzzz\\Helpers\\": "./src"
         },
-        "files": ["files/helpers.php"]
+        "files": [
+            "files/helpers.php",
+            "files/wp-helpers.php"
+        ]
     },
     "require": {
         "php": "^7.2"
