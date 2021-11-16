@@ -1,7 +1,7 @@
 <?php
-namespace Genzzz\Helpers;
+namespace Larapress\Helpers;
 
-use Genzzz\Helpers\Str;
+use Larapress\Helpers\Str;
 use Exception;
 
 class Encrypter
@@ -23,7 +23,6 @@ class Encrypter
     /**
      * Create a new encrypter instance.
      *
-     * @param  string  $key
      * @param  string  $cipher
      * @return void
      *

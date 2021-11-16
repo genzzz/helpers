@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Genzzz\Helpers\Str;
+use Larapress\Helpers\Str;
 
 class StrTest extends TestCase
 {

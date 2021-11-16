@@ -1,5 +1,5 @@
 <?php
-namespace Genzzz\Helpers;
+namespace Larapress\Helpers;
 
 class Str
 {
