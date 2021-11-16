@@ -1,5 +1,5 @@
 {
-    "name": "genzzz/helpers",
+    "name": "larapress/helpers",
     "description": "Functions that can help development",
     "license": "MIT",
     "authors": [
@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Genzzz\\Helpers\\": "./src"
+            "Larapress\\Helpers\\": "./src"
         },
         "files": [
             "files/helpers.php",

@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Genzzz\Helpers\Encrypter;
-use Genzzz\Helpers\Str;
+use Larapress\Helpers\Encrypter;
+use Larapress\Helpers\Str;
 
 class EncrypterTest extends TestCase
 {
@@ -10,8 +10,8 @@ class EncrypterTest extends TestCase
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths.');
 
-        $key = Encrypter::generateKey('AES-256-CBC');
-        $encrypter = new Encrypter($key, 'AES_128_CBC');
+        $_ENV['APP_KEY'] = Encrypter::generateKey('AES-256-CBC');
+        new Encrypter('AES-128-CBC');
     }
 
     public function test_expect_exception_encrypter_if_cipher_is_AES_256_CBC()
@@ -19,8 +19,8 @@ class EncrypterTest extends TestCase
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths.');
 
-        $key = Encrypter::generateKey('AES-128-CBC');
-        $encrypter = new Encrypter($key);
+        $_ENV['APP_KEY'] = Encrypter::generateKey('AES-128-CBC');
+        new Encrypter();
     }
 
     public function test_supported_function()
@@ -37,7 +37,7 @@ class EncrypterTest extends TestCase
 
     public function test_return_encryptor_with_AES_256_CBC()
     {
-        putenv("APP_KEY=" . Encrypter::generateKey('AES-256-CBC'));
+        $_ENV['APP_KEY'] = Encrypter::generateKey('AES-256-CBC');
 
         $encrypter = new Encrypter();
         $this->assertInstanceOf(Encrypter::class, $encrypter);
@@ -49,7 +49,7 @@ class EncrypterTest extends TestCase
 
     public function test_return_encryptor_with_AES_128_CBC()
     {
-        putenv("APP_KEY=" . Encrypter::generateKey('AES-128-CBC'));
+        $_ENV['APP_KEY'] = Encrypter::generateKey('AES-128-CBC');
 
         $encrypter = new Encrypter('AES-128-CBC');
         $this->assertInstanceOf(Encrypter::class, $encrypter);
@@ -129,7 +129,7 @@ class EncrypterTest extends TestCase
         $string = 'test';
         $encryptedString = $encrypter->encrypt($string);
 
-        putenv("APP_KEY=" . Encrypter::generateKey('AES-256-CBC'));
+        $_ENV['APP_KEY'] = Encrypter::generateKey('AES-256-CBC');
 
         $newEncrypter = new Encrypter();
 
