@@ -1,5 +1,4 @@
 <?php
-
 if(!function_exists('wp_assets')){
     /**
      * Get wordpress assets url
@@ -20,7 +19,7 @@ if(!function_exists('wp_theme_assets')){
      */
     function wp_theme_assets(){
         $theme = wp_get_theme();
-        return wp_assets() . '/themes/' . $theme->Stylesheet;
+        return wp_assets() . '/' . $theme->Stylesheet;
     }
 }
 
